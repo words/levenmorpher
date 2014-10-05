@@ -1,0 +1,28 @@
+{
+  "name": "levenmorpher",
+  "version": "1.0.0",
+  "description": "Morph one word into another, one word at a time.",
+  "main": "index.js",
+  "bin": {
+    "morph": "index.js"
+  },
+  "repository": "zeke/levenmorpher",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "levenshtein",
+    "array",
+    "words",
+    "fun",
+    "game"
+  ],
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "an-array-of-english-words": "^1.0.0",
+    "leven": "^1.0.0",
+    "lodash": "^2.4.1",
+    "lodash.sample": "^2.4.1"
+  }
+}
