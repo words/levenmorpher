@@ -4,7 +4,8 @@
   "description": "Morph one word into another, one word at a time.",
   "main": "index.js",
   "bin": {
-    "morph": "index.js"
+    "morph": "index.js",
+    "levelmorpher": "index.js"
   },
   "repository": "zeke/levenmorpher",
   "scripts": {
