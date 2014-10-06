@@ -22,8 +22,9 @@
   "license": "MIT",
   "dependencies": {
     "an-array-of-english-words": "^1.0.0",
-    "leven": "^1.0.0",
-    "lodash": "^2.4.1",
-    "lodash.sample": "^2.4.1"
+    "leven": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4"
   }
 }

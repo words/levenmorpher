@@ -2,49 +2,48 @@
 
 var distance = require("leven")
 var words = require("an-array-of-english-words")
-var sample = require("lodash").sample
 var args = process.argv.slice(2)
 
-var trail = []
+var morph = module.exports = function(start, target) {
 
-var findTrail = function(start, target) {
+  var trail = []
 
-  trail.push(start)
+  var step = function(start, target) {
+    trail.push(start)
 
-  // What words are one step away? (and haven't already been used)
-  var candidates = words.filter(function(word) {
-    return distance(start, word) === 1 && trail.indexOf(word) === -1
-  })
-
-  // Do any of those candidates complete the morph?
-  for (i in candidates) {
-    var candidate = candidates[i]
-    if (distance(candidate, target) === 1) {
-      trail.push(candidate)
+    // Done?
+    if (distance(start, target) === 1) {
       trail.push(target)
       return trail
     }
+
+    // Find words that are one mutation away from the start word
+    // and sort them by their distance from the target word
+    var candidates = words
+      .filter(function(word) {
+        return distance(start, word) === 1 && trail.indexOf(word) === -1
+      })
+      .sort(function(a, b) {
+        return distance(a, target) - distance(b, target)
+      })
+
+    if (!candidates.length)
+      return null
+
+    return step(candidates[0], target)
   }
 
-  // Is one of the candidates any closer to the target?
-  for (i in candidates) {
-    var candidate = candidates[i]
-    if (distance(candidate, target) < distance(start, target)) {
-      return findTrail(candidate, target)
-    }
-  }
+  return step(start, target)
 
-  // Can I at least pick a random candidate for the next round?
-  if (candidates.length) {
-    return findTrail(sample(candidates), target)
-  }
-
-  return trail
 }
 
+// CLI
+if (args.length) {
 
-if (args.length < 2 || args.length > 3)
-  return console.log("Usage:\n\nmorph good into evil\nmorph black to white\nmorph ruby node")
+  if (args.length < 2 || args.length > 3)
+    return console.log("Usage:\n\nmorph good into evil\nmorph black to white\nmorph ruby node")
 
-var t = findTrail(args[0], args[args.length-1])
-console.log(t.join("\n"))
+  var t = morph(args[0], args[args.length - 1])
+  console.log(t)
+
+}
