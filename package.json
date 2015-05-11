@@ -1,6 +1,6 @@
 {
   "name": "levenmorpher",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Morph one word into another, one word at a time.",
   "main": "index.js",
   "bin": {
