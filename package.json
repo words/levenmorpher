@@ -21,10 +21,10 @@
   "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com/)",
   "license": "MIT",
   "dependencies": {
-    "an-array-of-english-words": "^1.0.0",
-    "leven": "^1.0.0"
+    "leven": "^1.0.0",
+    "similar-english-words": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "^1.21.4"
+    "mocha": "^2.2.4"
   }
 }

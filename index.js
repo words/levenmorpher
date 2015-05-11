@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var distance = require("leven")
-var words = require("an-array-of-english-words")
+var words = require("similar-english-words")
 var args = process.argv.slice(2)
 
 var morph = module.exports = function(start, target) {
@@ -19,10 +19,7 @@ var morph = module.exports = function(start, target) {
 
     // Find words that are one mutation away from the start word
     // and sort them by their distance from the target word
-    var candidates = words
-      .filter(function(word) {
-        return distance(start, word) === 1 && trail.indexOf(word) === -1
-      })
+    var candidates = (words[start] || [])
       .sort(function(a, b) {
         return distance(a, target) - distance(b, target)
       })
