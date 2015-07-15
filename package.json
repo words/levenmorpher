@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
     "morph": "index.js",
-    "levelmorpher": "index.js"
+    "levenmorpher": "index.js"
   },
   "repository": "zeke/levenmorpher",
   "scripts": {
