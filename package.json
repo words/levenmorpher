@@ -1,7 +1,7 @@
 {
   "name": "levenmorpher",
   "version": "1.2.2",
-  "description": "Morph one word into another, one word at a time.",
+  "description": "Morph one word into another, one letter at a time",
   "license": "MIT",
   "keywords": [
     "levenshtein",

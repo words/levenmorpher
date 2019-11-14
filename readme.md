@@ -39,7 +39,7 @@ Yields:
 ```txt
 Usage: levenmorpher [options] <word> <word>
 
-Morph one word into another, one word at a time.
+Morph one word into another, one letter at a time
 
 Options:
 
