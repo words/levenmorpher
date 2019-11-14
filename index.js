@@ -1,14 +1,28 @@
 #!/usr/bin/env node
 
-var distance = require("leven")
-var words = require("similar-english-words")
+var distance = require('levenshtein-edit-distance')
+var words = require('similar-english-words')
 var args = process.argv.slice(2)
 
-var morph = module.exports = function(start, target) {
+module.exports = morph
 
+// CLI
+if (args.length !== 0) {
+  if (args.length < 2 || args.length > 3) {
+    console.log(
+      'Usage:\n\nmorph good into evil\nmorph black to white\nmorph ruby node'
+    )
+  } else {
+    console.log(morph(args[0], args[args.length - 1]))
+  }
+}
+
+function morph(start, target) {
   var trail = []
 
-  var step = function(start, target) {
+  return step(start, target)
+
+  function step(start, target) {
     trail.push(start)
 
     // Done?
@@ -19,28 +33,12 @@ var morph = module.exports = function(start, target) {
 
     // Find words that are one mutation away from the start word
     // and sort them by their distance from the target word
-    var candidates = (words[start] || [])
-      .sort(function(a, b) {
-        return distance(a, target) - distance(b, target)
-      })
+    var candidates = (words[start] || []).sort(function(a, b) {
+      return distance(a, target) - distance(b, target)
+    })
 
-    if (!candidates.length)
-      return null
+    if (candidates.length === 0) return null
 
     return step(candidates[0], target)
   }
-
-  return step(start, target)
-
-}
-
-// CLI
-if (args.length) {
-
-  if (args.length < 2 || args.length > 3)
-    return console.log("Usage:\n\nmorph good into evil\nmorph black to white\nmorph ruby node")
-
-  var t = morph(args[0], args[args.length - 1])
-  console.log(t)
-
 }
