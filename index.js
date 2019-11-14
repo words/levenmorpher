@@ -2,20 +2,8 @@
 
 var distance = require('levenshtein-edit-distance')
 var words = require('similar-english-words')
-var args = process.argv.slice(2)
 
 module.exports = morph
-
-// CLI
-if (args.length !== 0) {
-  if (args.length < 2 || args.length > 3) {
-    console.log(
-      'Usage:\n\nmorph good into evil\nmorph black to white\nmorph ruby node'
-    )
-  } else {
-    console.log(morph(args[0], args[args.length - 1]))
-  }
-}
 
 function morph(start, target) {
   var trail = []

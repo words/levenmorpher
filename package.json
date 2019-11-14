@@ -19,10 +19,11 @@
   ],
   "main": "index.js",
   "bin": {
-    "morph": "index.js",
-    "levenmorpher": "index.js"
+    "morph": "cli.js",
+    "levenmorpher": "cli.js"
   },
   "files": [
+    "cli.js",
     "index.js"
   ],
   "dependencies": {

@@ -37,9 +37,9 @@ Yields:
 ## CLI
 
 ```txt
-Usage: levenmorpher <word> <word>
+Usage: levenmorpher [options] <word> <word>
 
-Porter levenmorpher algorithm
+Morph one word into another, one word at a time.
 
 Options:
 
@@ -48,13 +48,13 @@ Options:
 
 Usage:
 
-# output stems
-$ levenmorpher considerations
-# consider
-
-# output stems from stdin
-$ echo "detestable vileness" | levenmorpher
-# detest vile
+# output distance
+$ levenmorpher ruby node
+ruby
+rube
+robe
+rode
+node
 ```
 
 ## License
