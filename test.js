@@ -8,6 +8,8 @@ test('levenmorpher', function(t) {
     'returns an array of words from a to b'
   )
 
+  t.deepEqual(morph('same', 'same'), ['same'], 'should support same two words')
+
   t.deepEqual(
     morph('funny', 'phoney'),
     ['funny', 'punny', 'penny', 'peony', 'phony', 'phoney'],

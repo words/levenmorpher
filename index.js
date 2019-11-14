@@ -19,6 +19,11 @@ function morph(start, target) {
     trail.push(start)
     seen.push(start)
 
+    // Same?
+    if (start === target) {
+      return trail
+    }
+
     // Done?
     if (levenshtein(start, target) === 1) {
       trail.push(target)
@@ -44,5 +49,5 @@ function distance(a, b, c) {
 }
 
 function alpha(a, b) {
-  return a === b ? 0 : collator.compare(a, b)
+  return collator.compare(a, b)
 }
