@@ -6,12 +6,16 @@ var words = require('similar-english-words')
 module.exports = morph
 
 function morph(start, target) {
+  var seen = []
   var trail = []
 
   return step(start, target)
 
   function step(start, target) {
+    var candidates
+
     trail.push(start)
+    seen.push(start)
 
     // Done?
     if (distance(start, target) === 1) {
@@ -19,14 +23,16 @@ function morph(start, target) {
       return trail
     }
 
-    // Find words that are one mutation away from the start word
-    // and sort them by their distance from the target word
-    var candidates = (words[start] || []).sort(function(a, b) {
-      return distance(a, target) - distance(b, target)
-    })
+    candidates = (words[start] || []).filter(x => !seen.includes(x))
 
     if (candidates.length === 0) return null
 
-    return step(candidates[0], target)
+    // Find words that are one mutation away from the start word
+    // and sort them by their distance from the target word
+    return step(candidates.sort(sort)[0], target)
+
+    function sort(a, b) {
+      return distance(a, target) - distance(b, target)
+    }
   }
 }
