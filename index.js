@@ -1,9 +1,11 @@
 'use strict'
 
-var distance = require('levenshtein-edit-distance')
+var levenshtein = require('levenshtein-edit-distance')
 var words = require('similar-english-words')
 
 module.exports = morph
+
+var collator = new Intl.Collator()
 
 function morph(start, target) {
   var seen = []
@@ -18,7 +20,7 @@ function morph(start, target) {
     seen.push(start)
 
     // Done?
-    if (distance(start, target) === 1) {
+    if (levenshtein(start, target) === 1) {
       trail.push(target)
       return trail
     }
@@ -32,7 +34,15 @@ function morph(start, target) {
     return step(candidates.sort(sort)[0], target)
 
     function sort(a, b) {
-      return distance(a, target) - distance(b, target)
+      return distance(a, b, target) || alpha(a, b)
     }
   }
+}
+
+function distance(a, b, c) {
+  return levenshtein(a, c) - levenshtein(b, c)
+}
+
+function alpha(a, b) {
+  return a === b ? 0 : collator.compare(a, b)
 }
