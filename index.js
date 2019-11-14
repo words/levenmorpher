@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+'use strict'
 
 var distance = require('levenshtein-edit-distance')
 var words = require('similar-english-words')
