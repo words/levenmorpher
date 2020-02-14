@@ -16,7 +16,7 @@ that basically no one’s ever heard of.
 
 [npm][]:
 
-```bash
+```sh
 npm install levenmorpher
 ```
 
@@ -31,7 +31,7 @@ console.log(levenmorpher('ruby', 'node'))
 Yields:
 
 ```js
-[ 'ruby', 'rube', 'robe', 'rode', 'node' ]
+['ruby', 'rube', 'robe', 'rode', 'node']
 ```
 
 ## CLI

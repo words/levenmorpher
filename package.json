@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "levenshtein-edit-distance": "^2.0.0",
-    "similar-english-words": "^1.0.0"
+    "similar-english-words": "^2.0.0"
   },
   "devDependencies": {
     "nyc": "^15.0.0",
